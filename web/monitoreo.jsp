@@ -49,11 +49,11 @@
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=es"></script>        
         <script type="text/javascript" src="js/scriptMapa.js"></script>
 
-        <%   
-    response.setHeader("Cache-Control", "no-store");
+        <%
+            response.setHeader("Cache-Control", "no-store");
             //String usuario = (String) request.getSession().getAttribute("Sesion");
-            String usuario=(String) session.getAttribute("Sesion");
-             //out.print(usuario);
+            String usuario = (String) session.getAttribute("Sesion");
+            //out.print(usuario);
             //request.getSession().invalidate();
             if (usuario == null) {
                 response.sendRedirect("index.jsp");
@@ -93,7 +93,7 @@
                     <legend class="letra-verde"><%=titulo%></legend>
                     <%if (mostrarBoton) {%>
                     <form action="monitoreo.jsp" method="POST">
-                        <button name="Mostrar_Todo" type="submit" class="btn btn-default">Mostrar Todo</button>                                    
+                        <button name="Mostrar_Todo" type="submit" class="btn btn-default"><img src="imagenes/flecha.png" width="20"> Volver</button>
                     </form>
                     <br>
                     <%}%>                    
@@ -107,6 +107,9 @@
                                     <th>Estado</th>
                                     <th>Posición</th>
                                     <th>Recorrido</th>
+                                    <%if(!mostrarBoton)
+                                    out.print("<th>Detalles</th>");
+                                    %>
                                 </tr>
                             </thead>
                             <tbody>
@@ -116,11 +119,18 @@
                                         out.print("<td class=\"letra-verde resaltar\">" + lista.get(i).getPlaca() + "</td>");
                                         out.print("<td>" + lista.get(i).getFecha() + "</td>");
                                         out.print("<td>" + lista.get(i).getHora() + "</td>");
-                                        out.print("<td>" + lista.get(i).getEstadoGps()+ "</td>");
+                                        out.print("<td>" + lista.get(i).getEstadoGps() + "</td>");
                                         out.print("<td>" + lista.get(i).getPosicion() + "</td>");
-                                        out.print("<td>" + lista.get(i).getRecorrido() + "</td></tr>");
+                                        out.print("<td>" + lista.get(i).getRecorrido() + "</td>");
+                                        if(mostrarBoton){
+                                            out.print("</tr>");
+                                        }
+                                        else{
+                                            out.print("<td><a href=\"monitoreo.jsp?placa=" + lista.get(i).getPlaca() + "\"><input type=\"submit\" value=\"Ver\"/></a></td></tr>");
+                                        }
                                     }
                                 %>                                
+                            
                             </tbody>
                         </table>
                     </div>
