@@ -1,0 +1,60 @@
+
+            /* 
+            Max width before this PARTICULAR table gets nasty
+            This query will take effect for any screen smaller than 760px
+            and also iPads specifically.
+            */
+
+            #page-wrap{
+                border: 1px solid #d0d0d0;
+            }
+
+            @media 
+            only screen and (max-width: 760px),            
+            (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+                /* Force table to not be like tables anymore */
+                #page-wrap table, #page-wrap thead, #page-wrap tbody, #page-wrap th, #page-wrap td, #page-wrap tr { 
+                    display: block; 
+                }
+
+                /* Hide table headers (but not display: none;, for accessibility) */
+
+                
+                #page-wrap thead tr { 
+                    position: absolute;
+                    top: -9999px;
+                    left: -9999px;
+                }
+
+                #page-wrap tr { border: 1px solid #ccc; }
+
+                #page-wrap td { 
+                    /* Behave  like a "row" */
+                    border: none;
+                    border-bottom: 1px solid #eee; 
+                    position: relative;
+                    padding-left: 50%; 
+                }
+
+                #page-wrap td:before { 
+                    /* Now like a table header */
+                    position: absolute;
+                    /* Top/left values mimic padding */
+                    top: 6px;
+                    left: 6px;
+                    width: 45%; 
+                    padding-right: 10px; 
+                    white-space: nowrap;
+                }
+
+                /*
+                Label the data
+                */
+                #page-wrap td:nth-of-type(1):before { content: "Placa"; }
+                #page-wrap td:nth-of-type(2):before { content: "Fecha"; }
+                #page-wrap td:nth-of-type(3):before { content: "Hora"; }
+                #page-wrap td:nth-of-type(4):before { content: "Estado"; }
+                #page-wrap td:nth-of-type(5):before { content: "Posición"; }
+                #page-wrap td:nth-of-type(6):before { content: "Recorrido"; }
+                }

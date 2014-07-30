@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<servlet>
+		<servlet-name>servletHistorialVehiculo</servlet-name>
+		<servlet-class>Servlet.ServletHistorialVehiculo</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>servletHistorialVehiculo</servlet-name>
+		<url-pattern>/servletHistorialVehiculo</url-pattern>
+	</servlet-mapping>
+</web-app>

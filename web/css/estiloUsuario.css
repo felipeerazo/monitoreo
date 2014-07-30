@@ -1,0 +1,127 @@
+*{
+    margin: 0px;
+}
+
+html, body {
+    height: 100%;
+    position: relative;
+}
+
+header {
+
+    width: 100%;
+    height: 10%;
+    background-color:#fffd76;
+}
+
+#logo {
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-image: url("../imagenes/logo.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: auto;
+    margin: 0 0; 
+}
+
+#mapa {
+    width: 100%;
+    height: 80%;
+}
+
+footer{	
+    width: 100%;	
+    background-color:#fffd76;
+    text-align: center;
+}
+
+table{
+    margin: 0 auto;
+    border:0;
+}
+
+.iconosSociales{
+    width: 50px;
+    height: 50px;
+}
+
+#menu{
+    margin-top:  auto;
+    margin-bottom:  auto;
+    margin-left: auto;
+    margin-right: 3%;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    width: 172px;
+    height: 241px;
+    /*position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 39%;
+    width: 14%;
+    margin-top: -10%;
+    margin-left: 33%;*/
+    background-color: #C4E86B;
+    z-index:2;
+    border: 1px solid black;
+}
+
+form{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+input{
+    margin: 10px 10px 5px 10px;
+    text-align: center; 
+    color: #979797;
+}
+
+.modal {
+    /*width: 50%; 
+    height: 50%; 
+    position: absolute; 
+    top: 25%;
+    left: 25%; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 260px;
+    height: 136px;
+    margin-top: -68px;
+    margin-left: -130px;
+    display: none; 
+    z-index: 999;
+    background: 
+        rgba(0,0,0,0.5);
+    -webkit-animation-duration: 1s;
+    -webkit-animation-name: fade;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+}
+
+.modal a {
+    display: block; 
+    vertical-align: right; 
+    text-align: center;
+}
+
+.modal:target { 
+    display: table;
+    /*height:50% ;*/
+}
+
+button{
+    margin: 5px;
+}
+
+.modal_form{
+    margin-top: 10%;
+}
+
+.infoWindow {
+    width: 200px;
+    height: 60px;
+}
