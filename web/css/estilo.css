@@ -6,101 +6,7 @@
 body {
     height: 100%;
 }
-/*
-section{
-    text-align: center;
-}
 
-article, fieldset{
-    display: inline-block;
-}
-
-
-.contenido_login{
-    width: 90%;
-    height: 100%;
-    margin: 50px auto;
-    text-align: center;
-}
-
-.contenido{
-    width: 90%;
-    height: 100%;
-    margin: 80px auto;
-    text-align: center;
-}
-
-.contenido_monitoreo{
-    width: 90%;
-    height: 100%;
-    margin: 80px auto;
-    text-align: center;
-}
-
-.fright{
-    float:right;
-    display:block;
-    overflow:hidden;
-}
-
-.vision_vehicular{
-    width: 95%;
-}
-
-.fieldset_monitoreo{
-    width: 84%;
-}
-
-.fieldset_mapa{
-    width: 90%;
-}
-
-legend{
-    text-align: left;
-}
-
-input {
-    margin-top: 10px;
-}
-
-.input_texto{
-    text-align: center; 
-    color: #979797;
-}
-
-header{
-    position: absolute;
-    top:10px;
-    width: 80%;
-    margin-left: 10%;
-}
-
-.encabezado{
-    position: absolute;
-    top:10px;
-    width: 80%;
-    margin-left: 10%;
-}
-
-.buscar{
-    position: absolute;
-    top:0px;
-    right: 15px;
-}
-
-footer{    
-    text-align: center;
-    width: 100%;
-    bottom: 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 20px;
-}
-
-#llaves{
-    border: 1px solid #d0d0d0;
-}
-*/
 #mapa{
     width: 90%;
     height: 300px;
@@ -114,39 +20,6 @@ footer{
     margin: 8px auto;
     border: 1px solid #d0d0d0;
 }
-/*
-.slide{
-    height: 150px;
-}
-
-
-@media only screen and (max-width: 480px) {
-    .encabezado {
-    width: 100%;         
-        margin: 0 auto;
-        text-align: center;        
-    }
-
-    .fright{
-        display:block;
-overflow:hidden;
-float: none;
-    }
-
-    .buscar{
-        margin:0 auto;
-    }
-
-    .fieldset_monitoreo{
-        width: 90%;
-    }
-    .contenido_monitoreo{
-        margin-top: 150px;
-    }
-}
-.asignacion{
-    width: 161px;
-}*/
 
 .letra-verde{
     color: #555;
@@ -160,4 +33,9 @@ float: none;
     font-weight: normal;
     font-style: normal;
     color: black;
+}
+
+.resaltar{
+    font-size: 120%;
+    font-weight:bold;    
 }

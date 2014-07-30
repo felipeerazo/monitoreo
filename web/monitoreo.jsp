@@ -98,7 +98,7 @@
                     <br>
                     <%}%>                    
                     <div id="page-wrap">
-                        <table>
+                        <table class="tablaResponsive">
                             <thead>
                                 <tr>
                                     <th>Placa</th>
@@ -113,7 +113,7 @@
                                 <%
                                     for (int i = 0; i < lista.size(); i++) {
                                         out.print("<tr onclick=\"verInfo(" + lista.get(i).getPosicion() + ", true, '" + lista.get(i).getPlaca() + "');\">");
-                                        out.print("<td>" + lista.get(i).getPlaca() + "</td>");
+                                        out.print("<td class=\"letra-verde resaltar\">" + lista.get(i).getPlaca() + "</td>");
                                         out.print("<td>" + lista.get(i).getFecha() + "</td>");
                                         out.print("<td>" + lista.get(i).getHora() + "</td>");
                                         out.print("<td>" + lista.get(i).getEstadoGps()+ "</td>");
