@@ -62,8 +62,10 @@
                     <div id="mapa">
                     </div>
                     <script type="text/javascript">
+                        $("#mapa").ready(function() {
                         mostrarMapa(<%=posicion%>);
                         obtenerCiudad('#ciudad', <%=posicion%>);
+                    });
                     </script>
                     <button class="button-secondary pure-button" id="botonVerMas">Ver más...</button>
                     <table id="tabla">

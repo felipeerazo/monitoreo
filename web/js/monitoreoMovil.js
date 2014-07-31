@@ -1,15 +1,24 @@
 
+var markerVehiculo, mapa;
+
 $().ready(function() {
     $('#tabla').hide();
+    window.setInterval("actualizarPosicionVehiculo()", 5000);
     $("#botonVerMas").on('click', function(e) {
         $('#tabla').show();
-        $.post('../servletHistorialVehiculo', {
-            placa:$('#placa').val()
-        }, function(responseText) {
-            $('#resultado').html(responseText);
-        });
+        verMas();
+        
     });
 });
+
+function verMas() {
+    $.post('../servletHistorialVehiculo', {
+        metodo: 'verMas',
+        placa: $('#placa').val()
+    }, function(data) {
+        $('#resultado').html(data);
+    });
+}
 
 function mostrarMapa(x, y) {
     var mapDiv = document.getElementById('mapa');
@@ -18,8 +27,8 @@ function mostrarMapa(x, y) {
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var mapa = new google.maps.Map(mapDiv, options);
-    var marker = new google.maps.Marker({
+    mapa = new google.maps.Map(mapDiv, options);
+    markerVehiculo = new google.maps.Marker({
         position: mapa.getCenter()
                 , map: mapa
                 , icon: '../imagenes/icono_carro.png'
@@ -38,3 +47,22 @@ function obtenerCiudad(id, lat, lng) {
             });
 }
 
+function actualizarPosicionVehiculo() {
+    if (markerVehiculo != null) {
+        markerVehiculo.setMap(null);
+    }
+    $.post('../servletHistorialVehiculo', {
+        metodo: 'actualizarPosicionVehiculo',
+        placa: $('#placa').val()
+    }, function(data) {
+        dibujarVehiculo(data);
+    }, "json");
+}
+
+function dibujarVehiculo(data) {
+    markerVehiculo = new google.maps.Marker({
+        position: new google.maps.LatLng(data["lat"], data["lng"])
+                , map: mapa
+                , icon: '../imagenes/icono_carro.png'
+    });
+}
