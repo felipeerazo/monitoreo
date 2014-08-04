@@ -79,15 +79,7 @@
                                 <th>Recorrido</th>
                             </tr>
                         </thead>
-                        <tbody id="resultado">
-                            <!--<tr>
-                                <td>James</td>
-                                <td>Matman</td>
-                                <td>Chief Sandwich Eater</td>
-                                <td>Lettuce Green</td>
-                                <td>Trek</td>
-                                <td>Digby Green</td>
-                            </tr>-->                            
+                        <tbody id="resultado">                         
                         </tbody>
                     </table>
                 </center>

@@ -19,6 +19,8 @@ public class HistorialVehiculo {
     private String recorrido;
     private int datoEvento;
     private int evento;
+    private String latitud;
+    private String longitud;
    
     public HistorialVehiculo() {
     }
@@ -208,6 +210,34 @@ public class HistorialVehiculo {
             return true;
         }
         return false;
+    }
+
+    /**
+     * @return the latitud
+     */
+    public String getLatitud() {
+        return latitud;
+    }
+
+    /**
+     * @param latitud the latitud to set
+     */
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    /**
+     * @return the longitud
+     */
+    public String getLongitud() {
+        return longitud;
+    }
+
+    /**
+     * @param longitud the longitud to set
+     */
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
     }
     
 }

@@ -43,6 +43,8 @@ public class ServletHistorialVehiculo extends HttpServlet {
             verMas(request, out);
         } else if (request.getParameter("metodo").equals("actualizarPosicionVehiculo")) {
             actualizarPosicionVehiculo(request, out);
+        } else if (request.getParameter("metodo").equals("simular")) {
+            simular(request, out);
         }
     }
 
@@ -89,10 +91,10 @@ public class ServletHistorialVehiculo extends HttpServlet {
 
     private void verMas(HttpServletRequest request, PrintWriter out) {
         String placa = request.getParameter("placa");
-        Controlador.DAOHistorialVehiculo daoHistorialVehiculo = new Controlador.DAOHistorialVehiculo();
+        Controlador.DAOHistorialVehiculo daohv = new Controlador.DAOHistorialVehiculo();
         LinkedList<HistorialVehiculo> lista;
         try {
-            lista = daoHistorialVehiculo.listar(placa);
+            lista = daohv.listar(placa);
             if (lista.size() == 0) {
                 lista = new LinkedList<HistorialVehiculo>();
                 lista.add(new HistorialVehiculo("No existen registros o el vehículo no está registrado.", "", "", "", "", ""));
@@ -115,21 +117,43 @@ public class ServletHistorialVehiculo extends HttpServlet {
             out.close();
         }
     }
+    Controlador.DAOHistorialVehiculo daoHistorialVehiculo= new Controlador.DAOHistorialVehiculo();
 
-    private void actualizarPosicionVehiculo(HttpServletRequest request, PrintWriter out) {
+    private void actualizarPosicionVehiculo(HttpServletRequest request, PrintWriter out) {        
+        daoHistorialVehiculo.getConn().conectar();
         String placa = request.getParameter("placa");
-        Controlador.DAOHistorialVehiculo daoHistorialVehiculo = new Controlador.DAOHistorialVehiculo();
         LinkedList<HistorialVehiculo> lista;
         try {
             lista = daoHistorialVehiculo.listar(placa);
+            if (lista != null) {
+                String v[] = lista.get(0).getPosicion().split(",");
+                out.println("{\"lat\":" + v[0] + ",");
+                out.println("\"lng\":" + v[1] + "}");
+            }
         } catch (Exception e) {
-            out.println("Error: "+e.getMessage());
-            return;
+            out.println("Error: " + e.getMessage());
+        } finally {
+            out.close();
         }
+    }
+
+    private void simular(HttpServletRequest request, PrintWriter out) {
         try {
-            String v[]=lista.get(0).getPosicion().split(",");            
-            out.println("{\"lat\":"+v[0]+",");
-            out.println("\"lng\":"+v[1]+"}");
+            Controlador.DAOHistorialVehiculo daohv = new Controlador.DAOHistorialVehiculo();
+            HistorialVehiculo hv = new HistorialVehiculo();
+            hv.setPlaca("AF1431");
+            hv.setLongitud(request.getParameter("lng"));
+            hv.setLatitud(request.getParameter("lat"));
+            hv.setFecha("localtimestamp");
+            hv.setRecorrido("0");
+            hv.setEstadoGps("7");
+            hv.setDatoEvento(0);
+            hv.setEvento(21);
+            try {
+                out.print(daohv.insertar(hv));
+            } catch (Exception ex) {
+                Logger.getLogger(ServletHistorialVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } finally {
             out.close();
         }
